@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import Logo from './Logo';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -66,7 +65,7 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Logo />
+          <img src="./logoviaja.png" alt="Logo" width={160} height={160} />
           <Typography
             variant="h6"
             noWrap
