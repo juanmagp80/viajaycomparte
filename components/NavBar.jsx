@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import Logo from './Logo';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -53,7 +54,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function NavBar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, width: '100%'  }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -65,6 +66,7 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
+          <Logo />
           <Typography
             variant="h6"
             noWrap
