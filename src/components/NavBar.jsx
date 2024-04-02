@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import  Button  from '@mui/material/Button';
+import Button from '@mui/material/Button';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LoginIcon from '@mui/icons-material/Login';
 import Menu from '@mui/material/Menu';
@@ -18,36 +18,15 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import { useState } from 'react';
 
 
 
 
 
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
+
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'lavender',
@@ -67,17 +46,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBar() {
-  const [selectedContinent, setSelectedContinent] = React.useState(null);
-const [popoverAnchorEl, setPopoverAnchorEl] = React.useState(null);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [popoverAnchorEl, setPopoverAnchorEl] = useState(null);
+  const [selectedContinent, setSelectedContinent] = useState(null);
+
+  const continents = ['África', 'América', 'Asia', 'Europa', 'Oceanía'];
+  const countries = ['País 1', 'País 2', 'País 3'];
+  const cities = ['Ciudad 1', 'Ciudad 2', 'Ciudad 3'];
   const handleDestinosClick = (event) => {
     setPopoverAnchorEl(event.currentTarget);
   };
-  
+
   const handleContinentClick = (continent) => {
     setSelectedContinent(continent);
   };
-  
+
   const handleClosePopover = () => {
     setPopoverAnchorEl(null);
   };
@@ -91,67 +74,93 @@ const [popoverAnchorEl, setPopoverAnchorEl] = React.useState(null);
   };
 
   return (
-    <Box sx={{ flexGrow: 1, width: '100%', height:'100%'  }}>
-    <AppBar position="static" className='bg-black'>
-     
-          
-           
-          
-          
-          
-            <Popover
-  open={Boolean(popoverAnchorEl)}
-  anchorEl={popoverAnchorEl}
-  onClose={handleClosePopover}
-  anchorOrigin={{
-    vertical: 'bottom',
-    horizontal: 'center',
-  }}
-  transformOrigin={{
-    vertical: 'top',
-    horizontal: 'center',
-  }}
-  sx={{ width: '500px', height: '500px' }}
->
-  </Popover>
+
+    <AppBar className="bg-black">
+      <Box className="bg-white text-black" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ width: 160, height: 100, overflow: 'hidden', marginRight: 12 }}>
+            <img className="mb-4" src="./logoviaja.png" alt="Logo" style={{ width: '160px', height: '160px', objectFit: 'contain', marginTop: '-30px' }} />
+          </Box>
+          <Button color="inherit" onClick={handleDestinosClick}>
+            <Typography sx={{ fontSize: '16px', fontFamily: 'Martel' }}>Destinos</Typography>
+
+          </Button>
+          <Popover className='mt-4 '
+            open={Boolean(popoverAnchorEl)}
+            anchorEl={popoverAnchorEl}
+            onClose={handleClosePopover}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+
+
+          >
+            <Box className="rounded-2xl" sx={{ p: 2, display: 'flex', flexDirection: 'row', width: '80vw', height: '80vh', boxShadow: 4 }}>
+              <Box className="rounded-2xl" sx={{ flexGrow: 1 }}>
+                <Typography variant="h6">Continentes</Typography>
+                <List>
+                  {continents.map((continent) => (
+                    <ListItem button key={continent} onClick={() => handleContinentClick(continent)}>
+                      <ListItemText primary={continent} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+              <Box sx={{ flexGrow: 2 }}>
+                <Typography variant="h6">Países</Typography>
+                <List>
+                  {countries.map((country) => (
+                    <ListItem key={country}>
+                      <ListItemText primary={country} />
+                    </ListItem>
+                  ))}
+                </List>
+                <Typography variant="h6">Ciudades</Typography>
+                <List>
+                  {cities.map((city) => (
+                    <ListItem key={city}>
+                      <ListItemText primary={city} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </Box>
+          </Popover>
+          <Button color="inherit">
+            <Typography sx={{ fontSize: '16px', fontFamily: 'Martel' }}>Planning</Typography>
+
+          </Button>
+          <Button color="inherit">
+            <Typography sx={{ fontSize: '16px', fontFamily: 'Martel' }}>Inspírate</Typography>
+
+          </Button>
+        </Box>
+        <Box className="text-xl" sx={{ display: 'flex', alignItems: 'center', marginRight: 16, fontSize: '20px' }}>
+          <Button startIcon={<SearchIcon />} color="inherit">
+
+            <Typography sx={{ fontSize: '16px', fontFamily: 'Martel' }}>Buscar</Typography>
+
+          </Button>
+
+          <Button startIcon={<FavoriteIcon />} color="inherit">
+            <Typography sx={{ fontSize: '16px', fontFamily: 'Martel' }}>Favoritos</Typography>
+          </Button>
+          <Button startIcon={<LoginIcon />} color="inherit">
+            <Typography sx={{ fontSize: '16px', fontFamily: 'Martel' }}>Sing Up</Typography>
+          </Button>
+
+        </Box>
+      </Box>
 
 
 
 
+    </AppBar>
 
-
-
-  
-
-          
-  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-    <Box  sx={{ width: 160, height: 100, overflow: 'hidden' }}>
-      <img className="mb-4" src="./logoviaja.png" alt="Logo" style={{ width: '160px', height: '160px', objectFit: 'contain', marginTop: '-30px' }} />
-    </Box>
-    <Button  color="inherit">Destinos</Button>
-    <Button color="inherit">Planning</Button>
-    <Button  color="inherit">Inspírate</Button>
-  </Box>
-  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-    <Search>
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <StyledInputBase
-        placeholder="Search…"
-        inputProps={{ 'aria-label': 'search' }}
-      />
-    </Search>
-    <Button startIcon={<FavoriteIcon />} color="inherit">Favoritos</Button>
-    <Button startIcon={<LoginIcon />} color="inherit">Sign Up</Button>
-  </Box>
-</Box>
-         
-         
-      
-    
-      </AppBar>
-    </Box>
   );
 }

@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+      font-family: 'Martel';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('./assets/fonts/MartelSans-Regular.ttf'); /* IE9 Compat Modes */
+    }
+    @font-face {
+      font-family: 'Noto';
+      font-style: bold;
+      font-weight: 700;
+      font-display: swap;
+      src: url('./assets/fonts/NotoSans-Bold.ttf'); /* IE9 Compat Modes */
+    }
+    @font-face {
+      font-family: 'Oswald';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('./assets/fonts/Oswald-Bold.ttf'); /* IE9 Compat Modes */
+    }
+}
