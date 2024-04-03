@@ -4,6 +4,7 @@ const Header = () => {
     const Imagen1 = './Imagen1.avif';
     const Imagen2 = './Imagen2.avif';
     const Imagen3 = './Imagen3.avif';
+    const textos = ["Descubre más de Irlanda en bici", "9 cosas del parque nacional gran cañón que no conoces", "13 cosas que debes conocer antes de viajar a París"];
 
     return (
         <div className="flex flex-col items-stretch min-h-screen">
@@ -23,16 +24,19 @@ const Header = () => {
                     >
                         <img src={imagen} alt={`Imagen ${index + 1}`} className="w-full h-full object-cover brightness-75 hover:brightness-100 transition-all duration-700" />
                         <div
-                            className="arrow absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-300"
+                            className="arrow absolute bottom-0 right-0 transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-300"
                         >
-                            ➡️
+                            <img src="./flecha.png" alt="Arrow" className=" mr-6" />
                         </div>
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black font-bold">
-                            Texto {index + 1}
+                        <div className="bottom-8 font-noto text-4xl absolute text-white text-left left-0 ml-6 font-bold whitespace-pre-wrap overflow-visible">
+
+                            {textos[index]} {/* Renderizar el texto aquí */}
+
                         </div>
                     </div>
                 ))}
             </div>
+            {/* Eliminado aquí */}
             <div className="absolute top-1/2 font-noto font-bold text-8xl text-white w-full text-center mt-5">
                 Descubre tu próximo destino
             </div>
