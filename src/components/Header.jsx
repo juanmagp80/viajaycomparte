@@ -1,11 +1,29 @@
 import React from 'react';
 
+
+function dividirTexto(texto, longitudMaxima) {
+    const palabras = texto.split(' ');
+    let lineaActual = palabras[0];
+    let lineas = [];
+
+    for (let i = 1; i < palabras.length; i++) {
+        if (lineaActual.length + palabras[i].length + 1 > longitudMaxima) {
+            lineas.push(lineaActual);
+            lineaActual = palabras[i];
+        } else {
+            lineaActual += ' ' + palabras[i];
+        }
+    }
+
+    lineas.push(lineaActual);
+    return lineas.join('\n');
+}
 const Header = () => {
     const Imagen1 = './Imagen1.avif';
     const Imagen2 = './Imagen2.avif';
     const Imagen3 = './Imagen3.avif';
-    const textos = ["Descubre más de Irlanda en bici", "9 cosas del parque nacional gran cañón que no conoces", "13 cosas que debes conocer antes de viajar a París"];
-
+    const textosOriginales = ["Descubre más de Irlanda en bici", "9 cosas del parque nacional gran cañón que no conoces", "13 cosas que debes conocer antes de viajar a París"];
+    const textos = textosOriginales.map(texto => dividirTexto(texto, 20));
     return (
         <div className="flex flex-col items-stretch min-h-screen">
             <div className="flex flex-grow">

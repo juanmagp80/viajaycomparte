@@ -151,7 +151,7 @@ export default function NavBar() {
             <Typography sx={{ fontSize: '16px', fontFamily: 'Martel' }}>Favoritos</Typography>
           </Button>
           <Button startIcon={<LoginIcon />} color="inherit">
-            <Typography sx={{ fontSize: '16px', fontFamily: 'Martel' }}>Sing Up</Typography>
+            <Typography sx={{ fontSize: '16px', fontFamily: 'Martel' }}>Sign Up</Typography>
           </Button>
 
         </Box>

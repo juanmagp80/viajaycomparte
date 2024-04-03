@@ -9,8 +9,13 @@ export default {
       'martel': ['Martel'],
       'noto': ['Noto'],
       'oswald': ['Oswald'],
+      'tusker': ['Tusker'],
     },
-    extend: {},
+    extend: {
+      fontSize: {
+        '134': '134px',
+      },
+    },
   },
   plugins: [],
 }

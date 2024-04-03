@@ -24,4 +24,11 @@
       font-display: swap;
       src: url('./assets/fonts/Oswald-Bold.ttf'); /* IE9 Compat Modes */
     }
+    @font-face {
+      font-family: 'Tusker';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('./assets/fonts/TuskerGrotesk-6500Medium.ttf'); /* IE9 Compat Modes */
+    }
 }
